@@ -1,0 +1,175 @@
+:root{
+  --bg:#1a092d;
+  --card:#3b1053;
+  --accent:#ff2d75;
+  --text:#f3e8ff;
+  --muted:#c9a8ff;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
+.topbar{background:#2a0e40;padding:16px;text-align:center;font-size:1.2rem;color:var(--accent);font-weight:700}
+.container{flex:1;padding:24px;max-width:1000px;margin:0 auto;width:100%}
+.panel{display:block}
+.hidden{display:none}
+.home-title{text-align:center;margin-bottom:24px}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.menu-card{background:var(--card);padding:24px;border-radius:12px;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,0.3);transition:transform .18s,background .18s}
+.menu-card:hover{background:#531c7c;transform:translateY(-4px)}
+.menu-card h3{margin:0;color:var(--accent)}
+.backBtn{background:var(--accent);border:none;padding:8px 14px;border-radius:8px;color:white;margin-bottom:10px;cursor:pointer}
+.formBox{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin-top:8px}
+.formBox input{padding:8px 12px;border-radius:6px;border:1px solid #ccc;background:white;color:black}
+.formBox button{background:var(--accent);color:#fff;border:none;padding:8px 14px;border-radius:8px;cursor:pointer}
+.muted{color:var(--muted)}
+.instruction{max-width:760px;font-size:0.95rem;margin-top:6px}
+
+/* canvas */
+.game-area{display:flex;justify-content:center;margin-top:12px}
+canvas{background:linear-gradient(#dff0ff,#ffffff);border-radius:6px;max-width:100%;height:auto;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+
+/* overlay */
+.overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.7);z-index:1000}
+.question-box,.endBox{background:white;color:black;padding:18px;border-radius:10px;width:320px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,0.25)}
+.q-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.q-prompt{font-weight:700}
+.q-timer{font-weight:700}
+.q-choices{display:flex;gap:10px;justify-content:center;margin-top:8px}
+.choice{padding:10px 14px;border-radius:8px;border:1px solid #ddd;background:#f7f7f7;cursor:pointer;font-size:1.1rem}
+.choice:hover{transform:translateY(-3px)}
+.btnRow{display:flex;gap:12px;justify-content:center;margin-top:12px}
+.btnRow button{background:var(--accent);color:#fff;border:none;padding:8px 12px;border-radius:8px;cursor:pointer}
+
+/* countdown big number */
+#countNum{font-size:6rem;color:white;font-weight:700;animation:pop .45s ease}
+@keyframes pop{from{transform:scale(.3);opacity:0}to{transform:scale(1);opacity:1}}
+
+@media (max-width:720px){
+  .question-box,.endBox{width:92%}
+  .menu-grid{grid-template-columns:1fr}
+}
+/* ===== FLASHCARD (WORKING, non-conflicting) ===== */
+/* target only #card to avoid colliding with other .card rules */
+#card {
+  width: 720px;
+  max-width:95%;
+  height: 320px;
+  margin: 0 auto;
+  perspective: 1400px;
+  position: relative;
+}
+
+/* internal 3D container:
+   we'll use transform on #card to avoid needing extra inner element */
+#card.flipped .front { transform: rotateY(180deg); z-index:1; }
+#card.flipped .back  { transform: rotateY(360deg); z-index:2; }
+
+/* Both faces share baseline styling */
+#card .card-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  padding: 20px;
+  box-sizing: border-box;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(.2,.8,.2,1), opacity .3s;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  overflow:hidden;
+}
+
+/* front initially visible (0deg) */
+#card .front { transform: rotateY(0deg); background: linear-gradient(135deg,#2a2a3b,#1b1b2a); color:#fff; }
+
+/* back sits rotated 180deg (so when card rotates it becomes visible) */
+#card .back { transform: rotateY(180deg); background: linear-gradient(135deg,#252537,#1b1b2a); color:#fff; flex-direction:column; justify-content:center; text-align:center; }
+
+/* inside */
+#card .img-wrap{ flex:1; max-width:48%; display:flex; align-items:center; justify-content:center; padding-right:12px; }
+#card .img-wrap img{ width:100%; max-width:260px; border-radius:8px; object-fit:contain; }
+#card .hiragana-wrap{ flex:1; max-width:48%; display:flex; align-items:center; justify-content:center; }
+#card .hiragana{ font-size:4rem; font-weight:800; color:#fff; text-shadow:0 2px 8px rgba(0,0,0,0.6) }
+#card .romaji{ font-size:2rem; font-weight:700 }
+#card .meaning{ font-size:1.05rem; color:rgba(255,255,255,0.9) }
+#card .desc{ font-size:.95rem; color:rgba(255,255,255,0.8); margin-top:8px }
+
+/* ensure controls look OK (use your existing .btn styles) */
+.flash-controls .btn{ margin:0 4px }
+
+/* responsive stack */
+@media (max-width:800px){
+  #card .front{ flex-direction:column; gap:18px; padding:18px }
+  #card .hiragana{ font-size:3rem }
+}
+
+
+#materi {
+  background: #1a1a2e;
+  color: #fff;
+  padding: 20px;
+  line-height: 1.6;
+}
+
+.white { color: #fff; }
+
+.materi-block {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 18px;
+  transition: background 0.3s;
+}
+.materi-block:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.toggleBtn {
+  margin-top: 10px;
+  background: #ff5ca1;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+.example {
+  margin-top: 10px;
+  padding: 12px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 8px;
+}
+
+.hidden { display: none; }
+
+.pos-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+.posBtn {
+  flex: 1 1 100px;
+  background: #2b2b45;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 8px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background 0.3s;
+}
+.posBtn:hover {
+  background: #ff5ca1;
+}
+.pos-info {
+  margin-top: 16px;
+  text-align: center;
+  background: rgba(255,255,255,0.08);
+  padding: 12px;
+  border-radius: 10px;
+}
+

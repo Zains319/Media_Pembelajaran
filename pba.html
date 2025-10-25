@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Belajar Bahasa Jepang — Dino Quiz (Soal 2 Pilihan)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>Media Ajar Bahasa Jepang</h1>
+  </header>
+
+  <main class="container">
+    <!-- HOME -->
+    <section id="home" class="panel active">
+      <h2 class="home-title">Pilih Kegiatan Belajar</h2>
+      <div class="menu-grid">
+        <div class="menu-card" id="goMateri"><h3>📘 Materi</h3><p>Ringkasan & kosa kata</p></div>
+        <div class="menu-card" id="goFlashcard"><h3>🧠 Flashcards</h3><p>Latih hafalan</p></div>
+        <div class="menu-card" id="goGame"><h3>🎮 Game</h3><p>Dino Quiz — jawab 2 pilihan</p></div>
+      </div>
+    </section>
+
+    <!-- MATERI -->
+    <section id="materi" class="panel hidden">
+      <button class="backBtn">← Kembali</button>
+      <h2 class="white">Materi Interaktif「どこにありますか」</h2>
+    
+      <div class="materi-block">
+        <p>
+          Tema <b>「どこにありますか」(Doko ni arimasu ka)</b> digunakan untuk
+          menanyakan dan menjawab letak suatu benda atau tempat dalam bahasa Jepang.
+        </p>
+      </div>
+    
+      <div class="materi-block">
+        <h3 class="white">📘 Fungsi Partikel「に」(ni)</h3>
+        <p>
+          Partikel <b>に (ni)</b> menunjukkan lokasi keberadaan atau arah tujuan.
+        </p>
+        <button class="toggleBtn">Lihat Contoh</button>
+        <div class="example hidden">
+          <p>つくえのうえに ほんが あります。<br>
+          (Tsukue no ue ni hon ga arimasu.)<br>
+          📖 Ada buku di atas meja.</p>
+        </div>
+      </div>
+    
+      <div class="materi-block">
+        <h3 class="white">🗣️ Pola Kalimat Dasar</h3>
+        <button class="toggleBtn">Tampilkan Pola</button>
+        <div class="example hidden">
+          <pre class="white">
+    〜は どこに ありますか。
+    (〜 wa doko ni arimasu ka)
+    “Di mana 〜 berada?”
+    
+    〜に 〜が あります。
+    (〜 ni 〜 ga arimasu)
+    “Ada 〜 di 〜”
+          </pre>
+        </div>
+      </div>
+    
+      <div class="materi-block">
+        <h3 class="white">📍 Kosa Kata Posisi / Arah</h3>
+        <p>Klik kata untuk melihat artinya dan mendengar pelafalannya.</p>
+        <div class="pos-list">
+          <button class="posBtn" data-hira="うえ" data-romaji="ue" data-indo="atas">うえ</button>
+          <button class="posBtn" data-hira="した" data-romaji="shita" data-indo="bawah">した</button>
+          <button class="posBtn" data-hira="まえ" data-romaji="mae" data-indo="depan">まえ</button>
+          <button class="posBtn" data-hira="うしろ" data-romaji="ushiro" data-indo="belakang">うしろ</button>
+          <button class="posBtn" data-hira="なか" data-romaji="naka" data-indo="dalam">なか</button>
+          <button class="posBtn" data-hira="そと" data-romaji="soto" data-indo="luar">そと</button>
+          <button class="posBtn" data-hira="みぎ" data-romaji="migi" data-indo="kanan">みぎ</button>
+          <button class="posBtn" data-hira="ひだり" data-romaji="hidari" data-indo="kiri">ひだり</button>
+          <button class="posBtn" data-hira="となり" data-romaji="tonari" data-indo="sebelah">となり</button>
+          <button class="posBtn" data-hira="よこ" data-romaji="yoko" data-indo="samping">よこ</button>
+        </div>
+        <div id="posInfo" class="pos-info hidden">
+          <h4 id="posHira">うえ</h4>
+          <p id="posRomaji">ue</p>
+          <p id="posIndo">atas</p>
+        </div>
+      </div>
+    
+      <div class="materi-block">
+        <h3 class="white">🏫 Pola Kalimat Tempat</h3>
+        <button class="toggleBtn">Lihat Contoh</button>
+        <div class="example hidden">
+          <pre class="white">
+    ぎんこうの となりに レストランが あります。
+    (Ginkou no tonari ni resutoran ga arimasu.)
+    🍽️ Ada restoran di sebelah bank.
+          </pre>
+        </div>
+      </div>
+    
+      <div class="materi-block">
+        <h3 class="white">🗾 Kata Tunjuk Tempat</h3>
+        <ul>
+          <li>ここ (koko) – di sini → dekat dengan pembicara</li>
+          <li>そこ (soko) – di situ → dekat dengan lawan bicara</li>
+          <li>あそこ (asoko) – di sana → jauh dari keduanya</li>
+          <li>どこ (doko) – di mana → untuk bertanya</li>
+        </ul>
+      </div>
+    </section>
+    
+    
+
+   <!-- FLASHCARD (paste ganti area flashcards lama) -->
+<section id="flashcards" class="panel hidden">
+  <button class="backBtn tabBtn">← Kembali</button>
+  <h2 style="text-align:center;margin-top:12px">Flashcards — Hafalkan Kosakata</h2>
+
+  <div style="display:flex;flex-direction:column;align-items:center;margin-top:18px">
+    <!-- container with id "card" - JS expects this -->
+    <div id="card" class="card" aria-live="polite">
+      <!-- front -->
+      <div id="card-front" class="card-face front">
+        <div class="img-wrap">
+          <img id="cardImage" src="images/ue.jpg" alt="ue">
+        </div>
+        <div class="hiragana-wrap">
+          <div id="hiraganaText" class="hiragana">うえ</div>
+        </div>
+      </div>
+
+      <!-- back -->
+      <div id="card-back" class="card-face back">
+        <div class="back-content">
+          <div id="romajiText" class="romaji">ue</div>
+          <div id="meaningText" class="meaning">atas</div>
+          <div id="descText" class="desc" style="margin-top:8px;font-size:.95rem;color:rgba(255,255,255,0.9)">Penjelasan singkat</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- controls -->
+    <div class="flash-controls" style="margin-top:14px">
+      <button id="prevBtn" class="btn">Sebelumnya</button>
+      <button id="flipBtn" class="btn primary">Flip</button>
+      <button id="nextBtn" class="btn">Selanjutnya</button>
+      <button id="markBtn" class="btn">Mark</button>
+      <button id="shuffleBtn" class="btn">Shuffle</button>
+      <button id="resetProgressBtn" class="btn">Reset</button>
+    </div>
+
+    <div style="margin-top:10px;color:var(--muted)">
+      Progress: <span id="learnedCount">0</span>/<span id="totalCount">0</span>
+    </div>
+  </div>
+</section>
+
+
+
+
+    <!-- GAME -->
+    <section id="game" class="panel hidden">
+      <button class="backBtn">← Kembali</button>
+      <h2>Dino Quiz — Jawab Pilihan Hiragana</h2>
+
+      <!-- Nama + Start -->
+      <div id="nameForm" class="formBox">
+        <label for="playerName">Masukkan Nama:</label>
+        <input type="text" id="playerName" placeholder="Nama siswa..." />
+        <button id="startBtn">Start</button>
+        <p class="muted instruction">
+          Instruksi: Setelah tekan Start akan ada hitung mundur 3…2…1. Permainan akan mulai dan sebuah rintangan akan muncul.
+          Ketika rintangan muncul, permainan berhenti selama 10 detik dan sebuah soal (contoh: "Bawah") muncul dengan 2 pilihan (hiragana). 
+          Pilih jawaban yang benar (mis. "した"). Jika benar, rintangan hilang dan permainan berlanjut. Jika salah atau tidak memilih dalam 10 detik, kamu kalah.
+          Total ada 10 soal. Jika berhasil melewati semua 10 soal → kamu menang.
+        </p>
+      </div>
+
+      <!-- Countdown overlay -->
+      <div id="countdown" class="overlay hidden"><div id="countNum">3</div></div>
+
+      <!-- Canvas -->
+      <div class="game-area">
+        <canvas id="gameCanvas" width="900" height="200" class="hidden"></canvas>
+      </div>
+
+      <!-- Question overlay (muncul saat rintangan mencapai trigger) -->
+      <div id="questionOverlay" class="overlay hidden">
+        <div class="question-box">
+          <div class="q-top"><div class="q-prompt">Soal: <span id="qPrompt"></span></div><div class="q-timer">Waktu: <span id="qTimer">10</span>s</div></div>
+          <div class="q-choices">
+            <button class="choice btn" id="choiceA"></button>
+            <button class="choice btn" id="choiceB"></button>
+          </div>
+          <div id="qNotice" class="muted"></div>
+        </div>
+      </div>
+
+      <!-- Game Over overlay (kalah) -->
+      <div id="gameOverOverlay" class="overlay hidden">
+        <div class="endBox">
+          <h3>Kamu kena rintangan!</h3>
+          <p id="loseInfo">Jawaban salah atau waktu habis.</p>
+          <div class="btnRow">
+            <button id="retryBtn">🔁 Mulai Ulang</button>
+            <button id="giveUpBtn">🚪 Menyerah</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- WIN OVERLAY: gunakan markup ini (ganti yang lama di index.html) -->
+      <div id="winOverlay" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="winInfo">
+        <div class="overlay-card">
+          <h2 id="winInfo">Selamat!</h2>
+          <p id="winDetail" style="margin-top:8px;color:#fff;opacity:.95"></p>
+
+        <div class="overlay-actions" style="margin-top:14px;display:flex;gap:10px;justify-content:center">
+    <!-- tombol ulang → kembali ke form pengisian nama -->
+      <button id="winRestartBtn" class="btn primary">Ulang Permainan</button>
+
+      <!-- tombol home (pakai id existing jika ingin) -->
+        <button id="backHomeBtn" class="btn">Kembali ke Home</button>
+          </div>
+        </div>
+      </div>
+
+
+      
+
+  </main>
+
+  <footer class="footer">
+    <small>© 2025 Media Ajar — Toire wa doko desu ka</small>
+  </footer>
+
+  <script src="apps.js"></script>
+</body>
+</html>
